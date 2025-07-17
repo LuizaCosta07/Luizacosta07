@@ -1,8 +1,8 @@
-name: Generate Snake Animation 🐍
+name: 🐍 Snake animation
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # executa diariamente
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -12,17 +12,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Generate Snake SVG
+      - name: Generate snake.svg
         uses: Platane/snk@v3
         with:
-          github_user_name: SEU_USUARIO
+          github_user_name: LuizaCosta07
           outputs: |
             ./output/snake.svg
 
-      - name: Commit changes
+      - name: Commit and push
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Generate snake.svg"
           git push
+
